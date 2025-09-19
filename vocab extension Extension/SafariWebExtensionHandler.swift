@@ -8,8 +8,20 @@
 import SafariServices
 import os.log
 
+let SFExtensionMessageKey = "message"
+
+enum SafariExtensionRequestEnum: String {
+    case requestEnabledStatus = "request:enabled_status"
+}
+
+enum SafariExtensionDeliveryEnum: String {
+    case deliveryEnabledStatus = "delivery:enabled_status"
+}
+
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
+    private let suiteKeyStore = UserDefaults(suiteName: "group.thisisatest")
+    
     func beginRequest(with context: NSExtensionContext) {
         let request = context.inputItems.first as? NSExtensionItem
 
@@ -31,7 +43,18 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
         let response = NSExtensionItem()
         if #available(iOS 15.0, macOS 11.0, *) {
-            response.userInfo = [ SFExtensionMessageKey: [ "echo": message ] ]
+//            response.userInfo = [ SFExtensionMessageKey: [ "echo": message ] ]
+            switch request {
+                case .requestEnabledStatus:
+
+                let keyName = "user_defaults_suite_enabled"
+                let enabledFromDefaults = defaults.bool(forKey: keyName)
+                    response.userInfo = [
+                        SFExtensionMessageKey : [
+                            SafariExtensionDeliveryEnum.deliveryEnabledStatus.rawValue: enabledFromDefaults
+                        ]
+                    ]
+            }
         } else {
             response.userInfo = [ "message": [ "echo": message ] ]
         }

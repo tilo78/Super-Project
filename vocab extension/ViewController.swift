@@ -15,6 +15,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let suiteKeyStore = UserDefaults(suiteName: "group.thisisatest")
+        suiteKeyStore?.set(true, forKey: "user_defaults_suite_enabled")
+        
         self.webView.navigationDelegate = self
         self.webView.scrollView.isScrollEnabled = false
 
