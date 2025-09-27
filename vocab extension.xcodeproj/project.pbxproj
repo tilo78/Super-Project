@@ -388,6 +388,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GJN7Z9Q8FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "vocab extension Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "vocab extension Extension";
@@ -417,6 +418,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GJN7Z9Q8FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "vocab extension Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "vocab extension Extension";
@@ -448,6 +450,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GJN7Z9Q8FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "vocab extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "vocab extension";
@@ -483,6 +486,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GJN7Z9Q8FY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "vocab extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "vocab extension";
