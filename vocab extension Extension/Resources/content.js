@@ -7,10 +7,41 @@
 //});
 
 let foundWords = new Set();
+let highlighting = true;
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (msg.type === "getFoundWords") {
         sendResponse({ words: Array.from(foundWords) });
+    } else if (msg.type === "toggleHighlight") {
+        highlighting = !highlighting;
+//        chrome.storage.session.set({ highlighting }); // store state
+        
+        if (highlighting) {
+            (async () => {
+                const words = await getWordList();
+                for (const word of words) {
+                    highlightWord(word.trim());
+                }
+                chrome.runtime.sendMessage({
+                    type: "foundWords",
+                    words: Array.from(foundWords)
+                });
+            })();
+        } else {
+//            location.reload();
+            document.querySelectorAll("span[style*='background-color']").forEach(span => {
+                const text = document.createTextNode(span.textContent);
+                span.parentNode.replaceChild(text, span);
+            });
+            foundWords.clear();
+            chrome.runtime.sendMessage({
+                type: "foundWords",
+                words: []
+            });
+        }
+        sendResponse({ enabled: highlighting });
+        
+        return true;
     }
 });
 
